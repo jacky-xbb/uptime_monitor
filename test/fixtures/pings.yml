@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  domain: one
+  response_time: 1
+  alive: false
+
+two:
+  domain: two
+  response_time: 1
+  alive: false

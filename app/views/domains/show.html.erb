@@ -1,0 +1,36 @@
+<h1 class="font-semibold text-2xl mb-8">Uptime for <%= @domain.name %></h1>
+
+<%= turbo_stream_from dom_id(@domain) %>
+
+<div class="flex space-x-4 mb-6">
+  <%= button_to "Ping", domain_pings_path(@domain), method: :post, class: "btn-secondary" %>
+  <%= render "domains/monitor", domain: @domain %>
+</div>
+
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          Domain
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Sent at
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Response time
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody id="pings">
+      <% if @domain.pings.present? %>
+        <% @domain.pings.each do |ping| %>
+          <%= render partial: "pings/ping", locals: {ping: ping, domain: @domain} %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

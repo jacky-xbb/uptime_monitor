@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(domain, :monitor) do %>
+  <% if domain.monitoring? %>
+    <%= button_to "Stop Monitoring", domain_path(domain), method: :patch, class: "btn-secondary" %>
+  <% else %>
+    <%= button_to "Monitor", domain_path(domain), method: :patch, class: "btn-secondary" %>
+  <% end %>
+<% end %>

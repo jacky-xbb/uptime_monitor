@@ -1,0 +1,22 @@
+<li>
+  <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg
+    group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-domains">
+    <%= icon_domain %>
+    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"><%= text %></span>
+    <%= icon_dropdown %>
+  </button>
+  <ul id="dropdown-domains" class="hidden py-2 space-y-2">
+    <li>
+      <% if @domains.empty? %>
+        <div class="pl-11 text-sm text-gray-300"> please add a domain </div>
+      <% else %>
+        <% @domains.each do |domain| %>
+          <li class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group
+            hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+            <%= link_to domain.name, domain_path(domain) %>
+          </li>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</li>

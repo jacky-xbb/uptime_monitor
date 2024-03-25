@@ -1,0 +1,32 @@
+<h1 class="font-semibold text-2xl mb-8">PING</h1>
+
+<div class="relative overflow-x-auto">
+  <% if @domains.present? %>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                  Domain
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Most recent ping
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Response time
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @domains.each do |domain| %>
+              <%= render partial: "pings/ping", locals: {domain: domain, ping: domain.pings.last} %>
+            <% end %>
+        </tbody>
+    </table>
+  <% else %>
+    <p>Please select or add a domain to monitor.</p>
+  <% end %>
+</div>
+
