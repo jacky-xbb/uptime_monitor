@@ -1,3 +1,5 @@
+require 'net/http'
+
 class DomainPing
   def self.call(domain)
     uri = URI.parse("http://#{domain.name}") # Consider checking if HTTPS is needed
